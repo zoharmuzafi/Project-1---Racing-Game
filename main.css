@@ -1,1 +1,81 @@
-//css
+#lane1{
+	background-color: gray;
+	margin: 0;
+	margin-bottom: 10px;
+	width: 1228px;
+	height: 200px;
+	border-right: 10px solid white;
+	border-right: 10px solid blue;
+
+}
+#lane2{
+	background-color: black;
+	margin: 0;
+	margin-top: 10px;
+	width: 1228px;
+	height: 200px;
+	border-right: 10px solid blue;
+
+}
+#racer1{
+	background-color: blue;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 100px;
+	width: 100px;
+	margin-top: 30px; 
+	position: absolute;
+	
+}
+#racer2{
+	background-color: red;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 100px;
+	width: 100px;
+	margin-top: 30px; 
+	position: absolute;
+
+}
+#header{
+	text-align: center;;
+}
+img{
+	width: 200px;
+	height: 200px;
+	margin-bottom: 30px;
+}
+#h1Form{
+	text-align: center;
+	margin-left: 342px;
+}
+#formSub_header{
+	margin-left: 194px;
+}
+#nameDiv{
+	margin: 50px 305px;
+
+
+}
+#imges{
+	margin-left: 308px;
+	
+}
+#character{
+	margin-bottom: 20px;
+}
+#formButton{
+	margin-left: 545px;
+	height: 50px;
+	width: 200px;
+}
+
+body{
+	background-color: lightblue;
+}
+#racingPage{
+	display: none;
+}
+
+
+
