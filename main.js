@@ -13,6 +13,7 @@ var Player = function(name, img){
 
 };
 
+
 $(document).ready(function(){
 
 //checking JS 
@@ -20,7 +21,7 @@ console.log("JS is ready");
 
 
 //set the data from the form to the players
-$("#formButton").on("click", function(event){
+$("#form").on("submit", function(event){
 	event.preventDefault();
 	var i=0;
 	var player_name = "";
@@ -31,8 +32,13 @@ $("#formButton").on("click", function(event){
 //initiate 2 players
 	if(players.length < 2){
 
+
+		//name
 		player_name = $("#name").val();
-		player_img = $("input:radio[name=inlineRadioOptions]").val();
+
+		//character image
+		player_img = $("input:radio[name=inlineRadioOptions]:checked").val();
+
 		if(player_img === "option1"){
 			player_img = "http://static1.squarespace.com/static/514c8e20e4b0796ef46291e8/t/514cb9b0e4b0d2e6d865cd06/1363982769415/Character1AnimatedGIF.gif";
 		}
@@ -43,14 +49,17 @@ $("#formButton").on("click", function(event){
 			player_img = "http://media.kalio.net/blog/ringrun/ringrun-nina-side-animation.gif";
 		}
 
+		//creating a player from the Object
 		temp_player = new Player(player_name, player_img);
 		players.push(temp_player);
+
+		//initiate the form for the next player
 		$("#name").val("");
 		$("#nameLabel").replaceWith("<label for='name' id='nameLabel'>Name (Player 2)</label>");
 		
 	}
 
-//directing to the race
+	//directing to the game after registration of 2 players
 	if(players.length===2){
 		$("#lane1").append("<img id='racer1' src=" + players[0].img + ">");
 		$("#lane2").append("<img id='racer2' src=" + players[1].img + ">");
@@ -62,7 +71,6 @@ $("#formButton").on("click", function(event){
 
 //initiate the game
 	function initiateGame(){
-
 
 		$("#racer1").css("margin-left", "0");
 		$("#racer2").css("margin-left", "0");
@@ -76,11 +84,13 @@ $("#formButton").on("click", function(event){
 		race();
 	}
 
-
+	//the function manage the race itselfe 
 	function race(){
 
+		//listen to the key press
 		$(document).keydown(function(e){
-		
+			
+			//checing the pressed key
 			switch(e.which){
 
 			case 39: //right key
@@ -96,20 +106,11 @@ $("#formButton").on("click", function(event){
 						players[0].complete = true;
 						console.log(players[0].end_time);
 						winner();
-
 					}
 				});	
 				}		
 			
 			break;
-
-			// case 37: //left key	
-
-			// 	if(players[0].end_time ===0){
-			// 		//moving the element to the left
-			// 		$("#racer1").animate({"marginLeft":"0px"}, 10000);	
-			// 	}
-			// break;
 
 			case 70: //F key
 
@@ -130,17 +131,8 @@ $("#formButton").on("click", function(event){
 				}
 			break;
 
-			// case 83: //S key
-			// if(players[1].end_time === 0){
-
-			// 	//moving the element to the left
-			// 	$("#racer2").animate({"marginLeft":"0px"}, 10000);	
-			// }
-			// break;
-
 			default: return;
 		}
-
 	});
 
 
@@ -154,19 +146,17 @@ function winner(){
 		
 		if(players[0].end_time === players[1].end_time){
 			game_winner = "tie";
-			//$("#racer1, #racer2").finish();
 		}
 		else if(players[0].end_time < players[1].end_time){
-			game_winner = "player-1";
-			//$("#racer1, #racer2").finish();
+			game_winner = players[0].name;
+			
 		}
 		else{
-			game_winner = "player-2";
-			//$("#racer1, #racer2").finish();
+			game_winner = players[1].name;
 			
 		}
 	
-	appended = "<div id='winnerDiv'><p>the winner is:" + game_winner + "</p></div>";
+	appended = "<div id='winnerDiv'><h1>The winner is:<h1><p>" + game_winner + "</p></div>";
 	$("body").append(appended);
 	alert("The winner is" + game_winner + "Do you want to start a new game?");
 	initiateGame();
@@ -178,5 +168,4 @@ function winner(){
 	}
 }
 }
-
 });

@@ -58,16 +58,18 @@ img{
 
 }
 #imges{
-	margin-left: 308px;
+	margin-left: 254px;
 	
 }
 #character{
 	margin-bottom: 20px;
+	margin-left: -40px;
+	margin-bottom: 10px;
 }
-#formButton{
-	margin-left: 545px;
+.btn{
+	margin-left: 213px;
 	height: 50px;
-	width: 200px;
+	width: 705px;
 }
 
 body{
@@ -75,6 +77,21 @@ body{
 }
 #racingPage{
 	display: none;
+}
+#winnerDiv{
+	margin: 20px;
+	
+	font-size: 20px;
+	text-align: center;
+	display: block;
+}
+#name{
+	margin-left: -92px;
+	width: 721px;
+
+}
+#nameLabel{
+	margin:-89px;
 }
 
 
